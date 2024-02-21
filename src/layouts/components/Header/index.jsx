@@ -4,11 +4,14 @@ import Tippy from "@tippyjs/react/headless";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
     faCircleXmark,
+    faEllipsisVertical,
     faMagnifyingGlass,
+    faPlus,
     faSpinner,
 } from "@fortawesome/free-solid-svg-icons";
 import { Link, Form } from "react-router-dom";
 
+import Button from "~/components/Button";
 import styles from "./Header.module.scss";
 import images from "~/assets/images";
 import { Wrapper as PopperWrapper } from "~/components/Popper";
@@ -97,7 +100,21 @@ function Header() {
                 </div>
 
                 {/* Action */}
-                <div className={cx("action")}></div>
+                <div className={cx("action")}>
+                    <Button
+                        outlineGray
+                        medium
+                        className={cx("upload")}
+                        leftIcon={<FontAwesomeIcon icon={faPlus} />}
+                    >
+                        Upload
+                    </Button>
+                    <Button primary>Log in</Button>
+                    <FontAwesomeIcon
+                        icon={faEllipsisVertical}
+                        className={cx("icon-options")}
+                    />
+                </div>
             </div>
         </header>
     );
