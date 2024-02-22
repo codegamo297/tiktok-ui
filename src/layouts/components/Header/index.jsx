@@ -4,10 +4,10 @@ import Tippy from "@tippyjs/react/headless";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
     faCircleXmark,
-    faEllipsisVertical,
     faMagnifyingGlass,
     faPlus,
     faSpinner,
+    faEllipsisVertical,
 } from "@fortawesome/free-solid-svg-icons";
 import { Link, Form } from "react-router-dom";
 
@@ -16,8 +16,40 @@ import styles from "./Header.module.scss";
 import images from "~/assets/images";
 import { Wrapper as PopperWrapper } from "~/components/Popper";
 import AccountItem from "~/components/AccountItem";
+import Menu from "~/components/Popper/Menu";
+import {
+    CircleQuestionIcon,
+    CreativeIcon,
+    KeyboardIcon,
+    LanguageIcon,
+    MoonIcon,
+} from "~/components/Icons";
 
 const cx = classNames.bind(styles);
+const MENU_ITEMS = [
+    {
+        icon: <CreativeIcon />,
+        title: "LIVE Creator Hub",
+        to: "/live",
+    },
+    {
+        icon: <LanguageIcon />,
+        title: "English",
+    },
+    {
+        icon: <CircleQuestionIcon />,
+        title: "Feedback and help",
+        to: "/feedback",
+    },
+    {
+        icon: <KeyboardIcon />,
+        title: "Keyboard shortcuts",
+    },
+    {
+        icon: <MoonIcon />,
+        title: "Dark mode",
+    },
+];
 
 function Header() {
     const [searchResult, setSearchResult] = useState([]);
@@ -110,10 +142,12 @@ function Header() {
                         Upload
                     </Button>
                     <Button primary>Log in</Button>
-                    <FontAwesomeIcon
-                        icon={faEllipsisVertical}
-                        className={cx("icon-options")}
-                    />
+
+                    <Menu items={MENU_ITEMS}>
+                        <button className={cx("icon-options")}>
+                            <FontAwesomeIcon icon={faEllipsisVertical} />
+                        </button>
+                    </Menu>
                 </div>
             </div>
         </header>
