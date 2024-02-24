@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import classNames from "classnames/bind";
-import Tippy from "@tippyjs/react/headless";
+import Tippy from "@tippyjs/react";
+import "tippy.js/dist/tippy.css";
+import HeadlessTippy from "@tippyjs/react/headless";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
     faCircleXmark,
@@ -18,12 +20,21 @@ import { Wrapper as PopperWrapper } from "~/components/Popper";
 import AccountItem from "~/components/AccountItem";
 import Menu from "~/components/Popper/Menu";
 import {
+    CameraIcon,
     CircleQuestionIcon,
+    CoinTiktokIcon,
     CreativeIcon,
+    FavoriteIcon,
     KeyboardIcon,
     LanguageIcon,
+    LogoutIcon,
+    MessageIcon,
     MoonIcon,
+    NotifyIcon,
+    SettingIcon,
+    UserIcon,
 } from "~/components/Icons";
+import Image from "~/components/Image";
 
 const cx = classNames.bind(styles);
 const MENU_ITEMS = [
@@ -35,6 +46,21 @@ const MENU_ITEMS = [
     {
         icon: <LanguageIcon />,
         title: "English",
+        children: {
+            title: "Language",
+            data: [
+                {
+                    type: "language",
+                    code: "en",
+                    title: "English",
+                },
+                {
+                    type: "language",
+                    code: "vi",
+                    title: "Tiếng Việt",
+                },
+            ],
+        },
     },
     {
         icon: <CircleQuestionIcon />,
@@ -53,12 +79,57 @@ const MENU_ITEMS = [
 
 function Header() {
     const [searchResult, setSearchResult] = useState([]);
+    const currentUser = true;
 
     useEffect(() => {
         setTimeout(() => {
             setSearchResult([]);
         }, 0);
     }, []);
+
+    // Handle logic
+    const handleMenuChange = (menuItem) => {
+        switch (menuItem.type) {
+            case "language":
+                // Handle change language
+                break;
+            default:
+        }
+    };
+
+    const userMenu = [
+        {
+            icon: <UserIcon />,
+            title: "View profile",
+            to: "/profile",
+        },
+        {
+            icon: <FavoriteIcon />,
+            title: "Favorites",
+            to: "/profile",
+        },
+        {
+            icon: <CoinTiktokIcon />,
+            title: "Get Coins",
+            to: "/coin",
+        },
+        {
+            icon: <CameraIcon />,
+            title: "Live Studio",
+            to: "/studio",
+        },
+        {
+            icon: <SettingIcon />,
+            title: "Settings",
+            to: "/setting",
+        },
+        ...MENU_ITEMS,
+        {
+            icon: <LogoutIcon />,
+            title: "Log out",
+            separate: true,
+        },
+    ];
 
     return (
         <header className={cx("wrapper")}>
@@ -72,7 +143,7 @@ function Header() {
 
                 {/* Search */}
                 <div className={cx("search")}>
-                    <Tippy
+                    <HeadlessTippy
                         visible={searchResult.length > 0}
                         interactive={true}
                         render={(attrs) => (
@@ -128,11 +199,11 @@ function Header() {
                                 <FontAwesomeIcon icon={faMagnifyingGlass} />
                             </button>
                         </Form>
-                    </Tippy>
+                    </HeadlessTippy>
                 </div>
 
                 {/* Action */}
-                <div className={cx("action")}>
+                <div className={cx("actions")}>
                     <Button
                         outlineGray
                         medium
@@ -141,12 +212,54 @@ function Header() {
                     >
                         Upload
                     </Button>
-                    <Button primary>Log in</Button>
 
-                    <Menu items={MENU_ITEMS}>
-                        <button className={cx("icon-options")}>
-                            <FontAwesomeIcon icon={faEllipsisVertical} />
-                        </button>
+                    {/* Xử lý trường hợp đăng nhập để hiển thị layout */}
+                    {currentUser ? (
+                        <>
+                            <Tippy
+                                delay={[0, 50]}
+                                content="Messages"
+                                placement="bottom"
+                            >
+                                <button className={cx("action-btn")}>
+                                    <MessageIcon
+                                        className={cx("action-icon")}
+                                    />
+                                    <span className={cx("badge")}>3</span>
+                                </button>
+                            </Tippy>
+                            <Tippy
+                                delay={[0, 50]}
+                                content="Inbox"
+                                placement="bottom"
+                            >
+                                <button className={cx("action-btn")}>
+                                    <NotifyIcon className={cx("action-icon")} />
+                                    <span className={cx("badge")}>12</span>
+                                </button>
+                            </Tippy>
+                        </>
+                    ) : (
+                        <>
+                            <Button primary>Log in</Button>
+                        </>
+                    )}
+                    <Menu
+                        items={currentUser ? userMenu : MENU_ITEMS}
+                        onChange={handleMenuChange}
+                    >
+                        {currentUser ? (
+                            <Image
+                                className={cx("user-avatar")}
+                                src="https://images.pexels.com/photos/1172207/pexels-photo-1172207.jpeg?auto=compress&cs=tinysrgb&w=600"
+                                alt="Đỗ Tất Hiếu"
+                                fallback="https://mighty.tools/mockmind-api/content/human/65.jpg"
+                            />
+                        ) : (
+                            <button className={cx("icon-options")}>
+                                <FontAwesomeIcon icon={faEllipsisVertical} />
+                            </button>
+                        )}
                     </Menu>
                 </div>
             </div>

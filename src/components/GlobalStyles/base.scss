@@ -74,3 +74,27 @@ button {
     padding: 0;
     cursor: pointer;
 }
+
+// Custom tippy tooltip
+body {
+    .tippy-box {
+        background-color: rgba(84, 84, 84, 0.92);
+        color: rgb(255, 255, 255);
+        border-radius: 8px;
+        font-weight: 600;
+        font-size: 1.6rem;
+        line-height: 2.1rem;
+    }
+
+    .tippy-content {
+        padding: 8px 9px;
+    }
+
+    .tippy-arrow {
+        color: rgba(84, 84, 84, 0.92);
+    }
+
+    .tippy-box[data-placement^="bottom"] > .tippy-arrow:before {
+        top: -8px;
+    }
+}
