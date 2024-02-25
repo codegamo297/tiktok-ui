@@ -1,23 +1,13 @@
-import { useEffect, useState } from "react";
 import classNames from "classnames/bind";
 import Tippy from "@tippyjs/react";
 import "tippy.js/dist/tippy.css";
-import HeadlessTippy from "@tippyjs/react/headless";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-    faCircleXmark,
-    faMagnifyingGlass,
-    faPlus,
-    faSpinner,
-    faEllipsisVertical,
-} from "@fortawesome/free-solid-svg-icons";
-import { Link, Form } from "react-router-dom";
+import { faPlus, faEllipsisVertical } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
 
 import Button from "~/components/Button";
 import styles from "./Header.module.scss";
 import images from "~/assets/images";
-import { Wrapper as PopperWrapper } from "~/components/Popper";
-import AccountItem from "~/components/AccountItem";
 import Menu from "~/components/Popper/Menu";
 import {
     CameraIcon,
@@ -35,6 +25,7 @@ import {
     UserIcon,
 } from "~/components/Icons";
 import Image from "~/components/Image";
+import Search from "../Search";
 
 const cx = classNames.bind(styles);
 const MENU_ITEMS = [
@@ -78,14 +69,7 @@ const MENU_ITEMS = [
 ];
 
 function Header() {
-    const [searchResult, setSearchResult] = useState([]);
     const currentUser = true;
-
-    useEffect(() => {
-        setTimeout(() => {
-            setSearchResult([]);
-        }, 0);
-    }, []);
 
     // Handle logic
     const handleMenuChange = (menuItem) => {
@@ -142,65 +126,7 @@ function Header() {
                 </div>
 
                 {/* Search */}
-                <div className={cx("search")}>
-                    <HeadlessTippy
-                        visible={searchResult.length > 0}
-                        interactive={true}
-                        render={(attrs) => (
-                            <div
-                                className={cx("search-result")}
-                                tabIndex="-1"
-                                {...attrs}
-                            >
-                                <PopperWrapper>
-                                    <div className={cx("search-title")}>
-                                        Accounts
-                                    </div>
-                                    <AccountItem />
-                                    <AccountItem />
-                                    <AccountItem />
-                                    <AccountItem />
-                                    <div className={cx("view-results")}>
-                                        View all results for
-                                    </div>
-                                </PopperWrapper>
-                            </div>
-                        )}
-                    >
-                        <Form
-                            method="post"
-                            action="/search"
-                            className={cx("form")}
-                        >
-                            <input
-                                className={cx("input")}
-                                type="text"
-                                placeholder="Search"
-                                aria-controls
-                                aria-label="Search"
-                                aria-expanded={false}
-                                aria-autocomplete="list"
-                                spellCheck={false}
-                            />
-                            <button type="button" className={cx("clear")}>
-                                <FontAwesomeIcon icon={faCircleXmark} />
-                            </button>
-                            <FontAwesomeIcon
-                                className={cx("loading")}
-                                icon={faSpinner}
-                            />
-
-                            <span className={cx("separate")}></span>
-                            <button
-                                className={cx("search-btn")}
-                                type="submit"
-                                aria-label="Search"
-                            >
-                                <FontAwesomeIcon icon={faMagnifyingGlass} />
-                            </button>
-                        </Form>
-                    </HeadlessTippy>
-                </div>
+                <Search />
 
                 {/* Action */}
                 <div className={cx("actions")}>

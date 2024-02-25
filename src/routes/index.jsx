@@ -14,7 +14,7 @@ import Search from "~/pages/Search";
 const publicRoutes = [
     { path: "/", component: Home },
     { path: "/following", component: Following },
-    { path: "/profile", component: Profile },
+    { path: "/@:nickname", component: Profile },
     { path: "/explore", component: Explore },
     { path: "/upload", component: Upload, layout: HeaderOnly },
     { path: "/feedback", component: Feedback, layout: FullWidthLayout },

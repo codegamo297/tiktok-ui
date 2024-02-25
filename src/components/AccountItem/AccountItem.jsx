@@ -1,34 +1,43 @@
+import PropTypes from "prop-types";
 import classNames from "classnames/bind";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheckCircle, faEllipsis } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
 
+import Image from "~/components/Image";
 import styles from "./AccountItem.module.scss";
 
 const cx = classNames.bind(styles);
 
-function AccountItem() {
+function AccountItem({ data }) {
     return (
-        <div className={cx("wrapper")}>
-            <img
-                src="https://images.pexels.com/photos/17604370/pexels-photo-17604370/free-photo-of-phong-c-nh-dan-ba-ng-i-d-ng-c.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load"
-                alt="Hoa"
+        <Link className={cx("wrapper")} to={`/@${data.nickname}`}>
+            <Image
+                src={data.avatar}
+                alt={data.full_name}
                 className={cx("avatar")}
             />
             <div className={cx("info")}>
                 <div>
                     <h4 className={cx("username")}>
-                        <span>hooa123</span>
-                        <FontAwesomeIcon
-                            icon={faCheckCircle}
-                            className={cx("check")}
-                        />
+                        <span>{data.nickname}</span>
+                        {data.tick && (
+                            <FontAwesomeIcon
+                                icon={faCheckCircle}
+                                className={cx("check")}
+                            />
+                        )}
                     </h4>
-                    <p className={cx("name")}>Đào Lê Phương Hoa</p>
+                    <p className={cx("name")}>{data.full_name}</p>
                 </div>
                 <FontAwesomeIcon className={cx("option")} icon={faEllipsis} />
             </div>
-        </div>
+        </Link>
     );
 }
+
+AccountItem.propTypes = {
+    data: PropTypes.object,
+};
 
 export default AccountItem;
