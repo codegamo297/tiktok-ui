@@ -26,6 +26,7 @@ import {
 } from "~/components/Icons";
 import Image from "~/components/Image";
 import Search from "../Search";
+import routesConfig from "~/config/routes";
 
 const cx = classNames.bind(styles);
 const MENU_ITEMS = [
@@ -56,7 +57,7 @@ const MENU_ITEMS = [
     {
         icon: <CircleQuestionIcon />,
         title: "Feedback and help",
-        to: "/feedback",
+        to: routesConfig.feedback,
     },
     {
         icon: <KeyboardIcon />,
@@ -85,7 +86,7 @@ function Header() {
         {
             icon: <UserIcon />,
             title: "View profile",
-            to: "/profile",
+            to: "/@dotathieu",
         },
         {
             icon: <FavoriteIcon />,
@@ -120,8 +121,8 @@ function Header() {
             <div className={cx("inner")}>
                 {/* Header Logo */}
                 <div className={cx("left")}>
-                    <Link to={"/"} className={cx("logo")}>
-                        <img src={images.logo} alt="Tiktok" />
+                    <Link to={routesConfig.home} className={cx("logo")}>
+                        <Image src={images.logo} alt="Tiktok" />
                     </Link>
                 </div>
 

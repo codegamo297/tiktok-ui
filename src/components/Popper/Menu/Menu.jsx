@@ -10,7 +10,7 @@ import styles from "./Menu.module.scss";
 
 const cx = classNames.bind(styles);
 
-function Menu({ children, items = [], onChange }) {
+function Menu({ children, items = [], hideOnClick = false, onChange }) {
     const [history, setHistory] = useState([{ data: items }]);
     const current = history[history.length - 1];
 
@@ -60,6 +60,7 @@ function Menu({ children, items = [], onChange }) {
                 </div>
             )}
             onHide={() => setHistory((prev) => prev.slice(0, 1))}
+            hideOnClick={hideOnClick}
         >
             {children}
         </Tippy>
@@ -69,6 +70,7 @@ function Menu({ children, items = [], onChange }) {
 Menu.propTypes = {
     children: PropTypes.node.isRequired,
     items: PropTypes.array,
+    hideOnClick: PropTypes.bool,
     onChange: PropTypes.func.isRequired,
 };
 

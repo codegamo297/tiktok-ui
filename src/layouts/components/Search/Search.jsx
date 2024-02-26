@@ -14,6 +14,7 @@ import AccountItem from "~/components/AccountItem";
 import styles from "./Search.module.scss";
 import { useDebounce } from "~/hooks";
 import * as searchServices from "~/apiServices/searchServices";
+import routesConfig from "~/config/routes";
 
 const cx = classNames.bind(styles);
 
@@ -81,7 +82,11 @@ function Search() {
                 )}
                 onClickOutside={handleHideResult}
             >
-                <Form method="post" action="/search" className={cx("form")}>
+                <Form
+                    method="get"
+                    action={routesConfig.search}
+                    className={cx("form")}
+                >
                     <input
                         ref={inputRef}
                         value={searchValue}
@@ -122,6 +127,7 @@ function Search() {
                         className={cx("search-btn")}
                         type="submit"
                         aria-label="Search"
+                        onClick={(e) => e.preventDefault()}
                     >
                         <FontAwesomeIcon icon={faMagnifyingGlass} />
                     </button>

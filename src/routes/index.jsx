@@ -1,3 +1,5 @@
+import routesConfig from "~/config/routes";
+
 // Layouts
 import { HeaderOnly, FullWidthLayout } from "~/layouts";
 
@@ -12,13 +14,17 @@ import Search from "~/pages/Search";
 
 // Public Routes
 const publicRoutes = [
-    { path: "/", component: Home },
-    { path: "/following", component: Following },
-    { path: "/@:nickname", component: Profile },
-    { path: "/explore", component: Explore },
-    { path: "/upload", component: Upload, layout: HeaderOnly },
-    { path: "/feedback", component: Feedback, layout: FullWidthLayout },
-    { path: "/search", component: Search },
+    { path: routesConfig.home, component: Home },
+    { path: routesConfig.following, component: Following },
+    { path: routesConfig.profile, component: Profile },
+    { path: routesConfig.explore, component: Explore },
+    { path: routesConfig.upload, component: Upload, layout: HeaderOnly },
+    {
+        path: routesConfig.feedback,
+        component: Feedback,
+        layout: FullWidthLayout,
+    },
+    { path: routesConfig.search, component: Search },
 ];
 
 // PrivateRoutes Pages
