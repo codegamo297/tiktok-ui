@@ -1,12 +1,14 @@
 .wrapper {
     --search-border-radius: 92px;
-    height: var(--default-layout-header-height, 60px);
-    width: 100%;
+
     position: fixed;
     top: 0px;
+    left: 0px;
+    width: 100%;
+    height: var(--default-layout-header-height, 60px);
     background: rgb(255, 255, 255);
     box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 1px;
-    z-index: 1000;
+    z-index: 10;
 }
 
 .inner {

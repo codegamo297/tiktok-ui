@@ -1,6 +1,6 @@
 // Menu wrapper
 .menu-list {
-    min-width: 224px;
+    max-width: 224px;
 
     .menu-item {
         margin-left: 0;
@@ -9,7 +9,12 @@
 
 .menu-popper {
     padding-bottom: 8px;
-    max-height: inherit;
+    // max-height: inherit;
+    max-height: min(-127px + 100vh, 760px);
+}
+
+.menu-body {
+    overflow-y: auto;
 }
 
 // Menu items
@@ -35,6 +40,7 @@
     position: relative;
     height: 50px;
     margin-top: -8px;
+    flex-shrink: 0;
 }
 
 .back-btn {

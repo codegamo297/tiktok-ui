@@ -3,7 +3,7 @@
 }
 
 .container {
-    margin-top: 60px;
+    margin-top: var(--default-layout-header-height);
     max-width: 100%;
     display: flex;
     flex: 1 1 auto;
@@ -11,6 +11,6 @@
 
 .content {
     display: flex;
-
+    margin-left: 240px;
     flex: 1;
 }

@@ -91,7 +91,7 @@ function Header() {
         {
             icon: <FavoriteIcon />,
             title: "Favorites",
-            to: "/profile",
+            to: "/@dotathieu",
         },
         {
             icon: <CoinTiktokIcon />,
