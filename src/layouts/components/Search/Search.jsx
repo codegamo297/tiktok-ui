@@ -13,8 +13,8 @@ import { Wrapper as PopperWrapper } from "~/components/Popper";
 import AccountItem from "~/components/AccountItem";
 import styles from "./Search.module.scss";
 import { useDebounce } from "~/hooks";
-import * as searchServices from "~/apiServices/searchServices";
-import routesConfig from "~/config/routes";
+import * as searchServices from "~/services/searchService";
+import config from "~/config";
 
 const cx = classNames.bind(styles);
 
@@ -84,7 +84,7 @@ function Search() {
             >
                 <Form
                     method="get"
-                    action={routesConfig.search}
+                    action={config.routes.search}
                     className={cx("form")}
                 >
                     <input

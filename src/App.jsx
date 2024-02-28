@@ -7,7 +7,7 @@ import {
 } from "react-router-dom";
 import { publicRoutes } from "~/routes";
 import Error from "./pages/Error";
-import { DefaultLayout } from "~/layouts";
+import DefaultLayout from "~/layouts";
 
 const router = createBrowserRouter(
     createRoutesFromElements([
