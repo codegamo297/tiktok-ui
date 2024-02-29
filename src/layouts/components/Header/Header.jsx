@@ -171,6 +171,7 @@ function Header() {
                             <Button primary>Log in</Button>
                         </>
                     )}
+
                     <Menu
                         items={currentUser ? userMenu : MENU_ITEMS}
                         onChange={handleMenuChange}
@@ -178,7 +179,7 @@ function Header() {
                         {currentUser ? (
                             <Image
                                 className={cx("user-avatar")}
-                                src="https://images.pexels.com/photos/1172207/pexels-photo-1172207.jpeg?auto=compress&cs=tinysrgb&w=600"
+                                src="https://i.pinimg.com/474x/79/19/e9/7919e9094ed1deea01b56e90e141fa9e.jpg"
                                 alt="Đỗ Tất Hiếu"
                                 fallback="https://mighty.tools/mockmind-api/content/human/65.jpg"
                             />
