@@ -1,0 +1,75 @@
+.wrapper {
+    padding: 20px;
+    width: 320px;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+}
+
+.avatar {
+    height: 44px;
+    width: 44px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.btn {
+    border-radius: 4px;
+}
+
+.nickname {
+    display: flex;
+    align-items: center;
+    color: var(--text-color);
+    font-weight: 700;
+    font-size: 1.8rem;
+    line-height: 2.4rem;
+}
+
+.check {
+    font-size: 1.4rem;
+    color: #20d5ec;
+    margin-left: 4px;
+}
+
+.name {
+    color: var(--text-color);
+    font-weight: 600;
+    font-size: 1.4rem;
+    line-height: 1.8rem;
+}
+
+.analytics {
+    margin-top: 8px;
+}
+
+.value,
+.label {
+    font-size: 1.7rem;
+    line-height: 2rem;
+}
+
+.value {
+    font-weight: 700;
+    margin-right: 6px;
+}
+
+.value ~ .value {
+    margin-left: 12px;
+}
+
+.label {
+    color: rgba(22, 24, 35, 0.75);
+}
+
+.bio {
+    font-size: 1.4rem;
+    line-height: 1.8rem;
+    padding-top: 16px;
+    margin-top: 16px;
+    border-top: 1px solid rgba(22, 24, 35, 0.12);
+}

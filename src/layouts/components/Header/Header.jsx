@@ -86,12 +86,12 @@ function Header() {
         {
             icon: <UserIcon />,
             title: "View profile",
-            to: "/@dotathieu",
+            to: "/@dotathieu0729",
         },
         {
             icon: <FavoriteIcon />,
             title: "Favorites",
-            to: "/@dotathieu",
+            to: "/@dotathieu0729",
         },
         {
             icon: <CoinTiktokIcon />,
@@ -99,7 +99,7 @@ function Header() {
             to: "/coin",
         },
         {
-            icon: <CameraIcon />,
+            icon: <CameraIcon height="2rem" width="2rem" />,
             title: "Live Studio",
             to: "/studio",
         },
