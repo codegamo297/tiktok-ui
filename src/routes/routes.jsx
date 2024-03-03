@@ -16,6 +16,7 @@ import Live from "~/pages/Live";
 import Coin from "~/pages/Coin";
 import Setting from "~/pages/Setting";
 import Studio from "~/pages/Studio";
+import Effect from "~/pages/Effect";
 
 // Public Routes
 const publicRoutes = [
@@ -35,6 +36,11 @@ const publicRoutes = [
     { path: config.routes.coin, component: Coin },
     { path: config.routes.setting, component: Setting, layout: HeaderOnly },
     { path: config.routes.studio, component: Studio, layout: HeaderOnly },
+    {
+        path: config.routes.effect,
+        component: Effect,
+        layout: HeaderOnly,
+    },
 ];
 
 // PrivateRoutes Pages

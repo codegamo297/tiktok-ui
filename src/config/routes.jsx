@@ -11,6 +11,7 @@ const routes = {
     coin: "/coin",
     setting: "/setting",
     studio: "/studio",
+    effect: "/effect",
 };
 
 export default routes;

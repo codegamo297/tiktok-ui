@@ -1,5 +1,19 @@
 .wrapper {
     width: 240px;
+    flex-shrink: 0;
+}
+
+.container {
     position: fixed;
+    width: inherit;
     padding: 20px 0px 26px 8px;
+    overflow-y: auto;
+    top: var(--default-layout-header-height);
+    bottom: 0;
+    z-index: 9997;
+
+    &:not(:hover)::-webkit-scrollbar-thumb {
+        background: transparent;
+        width: 2px;
+    }
 }
